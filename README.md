@@ -10,14 +10,37 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/your-username/PawsLock/releases/latest"><img src="https://img.shields.io/badge/Download-PawsLock.dmg-blue?style=for-the-badge&logo=apple" alt="Download DMG" /></a>
+</p>
+
+<p align="center">
   <a href="https://github.com/your-username/PawsLock/releases"><img src="https://img.shields.io/badge/Release-v1.0.0-blue?style=flat-square&logo=apple" alt="Release" /></a>
   <img src="https://img.shields.io/badge/Platform-macOS%2013.0+-555?style=flat-square&logo=apple" alt="macOS 13+" />
   <img src="https://img.shields.io/badge/Swift-5.9+-orange?style=flat-square&logo=swift" alt="Swift 5.9+" />
   <img src="https://img.shields.io/badge/UI-SwiftUI-cyan?style=flat-square" alt="SwiftUI" />
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="License MIT" /></a>
   <img src="https://img.shields.io/badge/Telemetry-Zero-success?style=flat-square" alt="Zero Telemetry" />
-  <img src="https://img.shields.io/badge/PRs-welcome-brightgreen?style=flat-square" alt="PRs Welcome" />
 </p>
+
+---
+
+## ⚡ Quick Download & Install (For Everyone)
+
+> [!IMPORTANT]
+> **New to GitHub / Bukan Programmer?**  
+> **JANGAN** klik tombol hijau `Code -> Download ZIP` di atas! Itu hanya berisi kode sumber mentah (*source code*) dan tidak bisa langsung dijalankan.  
+>  
+> 👉 **Unduh aplikasi siap pakai langsung di sini:**  
+> 🔗 [**Download PawsLock-v1.0.0.dmg (Klik di sini)**](https://github.com/your-username/PawsLock/releases/latest)
+
+### 📲 3 Langkah Mudah Memasang di Mac:
+
+1. **Unduh Installer**: Klik tautan download di atas untuk mendapatkan file `PawsLock-v1.0.0.dmg`.
+2. **Pasang ke Mac**: Klik dua kali file `.dmg` yang sudah diunduh, lalu **tarik (*drag & drop*) icon PawsLock ke folder Applications**.
+3. **Buka Aplikasi**:
+   * *Jika muncul dialog keamanan Apple ("App is from an unidentified developer")*:  
+     Cukup **Klik Kanan (atau Control + Klik)** pada icon PawsLock di folder Applications → pilih **Open** → klik **Open**. *(Hanya perlu dilakukan 1 kali pada pembukaan pertama)*.
+   * *Beri Izin Aksesibilitas*: Masuk ke **System Settings → Privacy & Security → Accessibility** dan aktifkan centang untuk **PawsLock**.
 
 ---
 
@@ -67,26 +90,9 @@ Most existing keyboard cleaners force a completely black, full-screen takeover t
 
 ---
 
-## 📥 Installation
+## 💻 Building from Source (For Developers)
 
-### Method 1: Download Pre-built App (Recommended)
-1. Go to the [**Releases**](https://github.com/your-username/PawsLock/releases) page.
-2. Download the latest `PawsLock.zip`.
-3. Unzip and drag `PawsLock.app` into your `/Applications` folder.
-
-> [!NOTE]
-> **macOS Gatekeeper First-Launch Tip:**  
-> Since PawsLock is open-source and not signed with a paid Apple Developer ID, macOS Gatekeeper may display a prompt stating the developer cannot be verified.  
-> - **Option A**: Right-click (or Control-click) `PawsLock.app` in Finder, select **Open**, and then click **Open**.  
-> - **Option B**: Run this one-line command in Terminal:  
->   ```bash
->   xattr -cr /Applications/PawsLock.app
->   ```
-
----
-
-### Method 2: Build from Source
-If you prefer compiling directly on your Mac:
+If you are a developer and want to compile the project yourself:
 
 ```bash
 # 1. Clone this repository
@@ -196,12 +202,6 @@ You can simply drag the **"Slide to Unlock"** bar at the bottom using your track
 ## 🤝 Contributing
 
 Contributions are warmly welcomed! Please check out [`CONTRIBUTING.md`](CONTRIBUTING.md) to get started.
-
-1. Fork the Project.
-2. Create your Feature Branch (`git checkout -b feature/CoolFeature`).
-3. Commit your Changes (`git commit -m 'feat: Add some CoolFeature'`).
-4. Push to the Branch (`git push origin feature/CoolFeature`).
-5. Open a Pull Request.
 
 ---
 
