@@ -10,11 +10,11 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/your-username/PawsLock/releases/latest"><img src="https://img.shields.io/badge/Download-PawsLock.dmg-blue?style=for-the-badge&logo=apple" alt="Download DMG" /></a>
+  <a href="https://github.com/djakamiriandi/PawsLock/releases/latest"><img src="https://img.shields.io/badge/Download-PawsLock.dmg-blue?style=for-the-badge&logo=apple" alt="Download DMG" /></a>
 </p>
 
 <p align="center">
-  <a href="https://github.com/your-username/PawsLock/releases"><img src="https://img.shields.io/badge/Release-v1.0.0-blue?style=flat-square&logo=apple" alt="Release" /></a>
+  <a href="https://github.com/djakamiriandi/PawsLock/releases"><img src="https://img.shields.io/badge/Release-v1.0.0-blue?style=flat-square&logo=apple" alt="Release" /></a>
   <img src="https://img.shields.io/badge/Platform-macOS%2013.0+-555?style=flat-square&logo=apple" alt="macOS 13+" />
   <img src="https://img.shields.io/badge/Swift-5.9+-orange?style=flat-square&logo=swift" alt="Swift 5.9+" />
   <img src="https://img.shields.io/badge/UI-SwiftUI-cyan?style=flat-square" alt="SwiftUI" />
@@ -31,7 +31,7 @@
 > **JANGAN** klik tombol hijau `Code -> Download ZIP` di atas! Itu hanya berisi kode sumber mentah (*source code*) dan tidak bisa langsung dijalankan.  
 >  
 > 👉 **Unduh aplikasi siap pakai langsung di sini:**  
-> 🔗 [**Download PawsLock-v1.0.0.dmg (Klik di sini)**](https://github.com/your-username/PawsLock/releases/latest)
+> 🔗 [**Download PawsLock-v1.0.0.dmg (Klik di sini)**](https://github.com/djakamiriandi/PawsLock/releases/latest)
 
 ### 📲 3 Langkah Mudah Memasang di Mac:
 
@@ -96,7 +96,7 @@ If you are a developer and want to compile the project yourself:
 
 ```bash
 # 1. Clone this repository
-git clone https://github.com/your-username/PawsLock.git
+git clone https://github.com/djakamiriandi/PawsLock.git
 cd PawsLock
 
 # 2. Compile and package the app bundle

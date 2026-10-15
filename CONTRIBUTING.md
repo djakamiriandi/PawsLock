@@ -12,7 +12,7 @@ Thank you for your interest in contributing to PawsLock! We welcome bug fixes, d
 ### Building Locally
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/PawsLock.git
+   git clone https://github.com/djakamiriandi/PawsLock.git
    cd PawsLock
    ```
 2. Build and sign the application bundle:

@@ -12,4 +12,4 @@
 - **Local Execution**: All processing occurs strictly on your local Mac.
 
 ## Reporting a Vulnerability
-If you discover a security or privacy vulnerability, please do NOT open a public GitHub issue. Instead, report it privately by opening a [Security Advisory](https://github.com/your-username/PawsLock/security/advisories) on GitHub or contacting the repository owner directly.
+If you discover a security or privacy vulnerability, please do NOT open a public GitHub issue. Instead, report it privately by opening a [Security Advisory](https://github.com/djakamiriandi/PawsLock/security/advisories) on GitHub or contacting the repository owner directly.
