@@ -1,0 +1,41 @@
+# macOS System Files
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+.Spotlight-V100
+.Trashes
+
+# Swift Package Manager Build Artifacts
+.build/
+Packages/
+Package.resolved
+
+# Xcode & Build Products
+*.xcodeproj/
+*.xcworkspace/
+xcuserdata/
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.pbxuser
+DerivedData/
+*.app/
+*.dSYM
+*.o
+
+# Environment & Credentials
+.env
+.env.*
+*.pem
+*.key
+*.p12
+
+# Editor & Temp
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+*.log
