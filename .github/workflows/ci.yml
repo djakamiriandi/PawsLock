@@ -1,0 +1,32 @@
+name: CI Build & Verify
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    name: Build PawsLock on macOS
+    runs-on: macos-14
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Verify Swift Toolchain
+        run: swift --version
+
+      - name: Run Build Script
+        run: |
+          chmod +x build.sh
+          ./build.sh
+
+      - name: Verify Application Bundle
+        run: |
+          test -d PawsLock.app
+          test -f PawsLock.app/Contents/MacOS/PawsLock
+          test -f PawsLock.app/Contents/Resources/AppIcon.icns
+          test -f PawsLock.app/Contents/Resources/cat_sweeping.png
+          echo "✅ PawsLock.app bundle structure verified successfully!"
