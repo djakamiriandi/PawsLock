@@ -20,12 +20,13 @@ mkdir -p "$RESOURCES"
 cp "$(swift build -c release --show-bin-path)/PawsLock" "$MACOS/PawsLock"
 cp "Info.plist" "$CONTENTS/Info.plist"
 if [ -d "Resources" ]; then
+    xattr -cr Resources 2>/dev/null || true
     cp -R Resources/* "$RESOURCES/"
 fi
 chmod +x "$MACOS/PawsLock"
 
 echo "🐾 [3/4] Code-signing PawsLock.app with ad-hoc signature..."
-xattr -cr "$APP_BUNDLE"
+xattr -cr "$APP_BUNDLE" 2>/dev/null || true
 codesign --force --deep --sign - "$APP_BUNDLE"
 
 echo "🐾 [4/4] Build complete!"
