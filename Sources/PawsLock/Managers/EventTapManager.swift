@@ -27,39 +27,60 @@ public class EventTapManager {
         isRightCmdDown = false
         dualHoldDuration = 0.0
         
+        // Intercept standard keys, modifier changes (Fn, Cmd, Shift, Ctrl, Option),
+        // and systemDefined (type 14) for media/brightness/globe shortcuts
         let eventMask: CGEventMask = (1 << CGEventType.keyDown.rawValue) |
                                      (1 << CGEventType.keyUp.rawValue) |
-                                     (1 << CGEventType.flagsChanged.rawValue)
+                                     (1 << CGEventType.flagsChanged.rawValue) |
+                                     (1 << 14) // NX_SYSDEFINED (media keys, brightness, volume, etc.)
         
         let selfPointer = Unmanaged.passUnretained(self).toOpaque()
         
-        guard let tap = CGEvent.tapCreate(
-            tap: .cgSessionEventTap,
+        let callback: CGEventTapCallBack = { (proxy, type, event, refcon) -> Unmanaged<CGEvent>? in
+            guard let refcon = refcon else {
+                return Unmanaged.passRetained(event)
+            }
+            let manager = Unmanaged<EventTapManager>.fromOpaque(refcon).takeUnretainedValue()
+            return manager.handleEvent(proxy: proxy, type: type, event: event)
+        }
+        
+        // Primary: Hardware Input Device (HID) level tap to intercept Fn/Globe & hardware keys before WindowServer
+        var tap = CGEvent.tapCreate(
+            tap: .cghidEventTap,
             place: .headInsertEventTap,
             options: .defaultTap,
             eventsOfInterest: eventMask,
-            callback: { (proxy, type, event, refcon) -> Unmanaged<CGEvent>? in
-                guard let refcon = refcon else {
-                    return Unmanaged.passRetained(event)
-                }
-                let manager = Unmanaged<EventTapManager>.fromOpaque(refcon).takeUnretainedValue()
-                return manager.handleEvent(proxy: proxy, type: type, event: event)
-            },
+            callback: callback,
             userInfo: selfPointer
-        ) else {
-            print("[PawsLock] Failed to create CGEventTap.")
+        )
+        
+        // Fallback: Session level tap if HID tap is not permitted
+        if tap == nil {
+            print("[PawsLock] Warning: .cghidEventTap failed, falling back to .cgSessionEventTap.")
+            tap = CGEvent.tapCreate(
+                tap: .cgSessionEventTap,
+                place: .headInsertEventTap,
+                options: .defaultTap,
+                eventsOfInterest: eventMask,
+                callback: callback,
+                userInfo: selfPointer
+            )
+        }
+        
+        guard let finalTap = tap else {
+            print("[PawsLock] Failed to create any CGEventTap.")
             return false
         }
         
-        self.eventTap = tap
-        let source = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, tap, 0)
+        self.eventTap = finalTap
+        let source = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, finalTap, 0)
         self.runLoopSource = source
         
         CFRunLoopAddSource(CFRunLoopGetMain(), source, .commonModes)
-        CGEvent.tapEnable(tap: tap, enable: true)
+        CGEvent.tapEnable(tap: finalTap, enable: true)
         
         startHeartbeat()
-        print("[PawsLock] EventTap started successfully.")
+        print("[PawsLock] EventTap started successfully at HID level.")
         return true
     }
     
@@ -150,7 +171,7 @@ public class EventTapManager {
             AppState.shared.updateCommandKeys(left: isLeftCmdDown, right: isRightCmdDown)
         }
         
-        // Swallow keyboard input while locked
+        // Swallow ALL keyboard input, modifier changes (including Fn keycode 63), and systemDefined events while locked
         return nil
     }
     
